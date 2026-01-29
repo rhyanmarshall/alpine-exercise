@@ -3,5 +3,20 @@ layout: layout.liquid
 title: 11ty Boilerplate
 ---
 
-<h1>Yet Another 11ty <strong>Boilerplate</strong></h1>
-<img alt="pine" src="/images/pine.png" width="50" />
+<div x-data="randomName()">
+  <button @click="displayName()">Click for a Random Name</button>
+  <h1 x-text="currentName"></h1>
+  <img alt="pine" src="/images/pine.png" width="50" />
+</div>
+
+<script>
+  function randomName() {
+    return {
+      currentName: '',
+      names: ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve', 'Frank', 'Grace', 'Henry', 'Iris', 'Jack'],
+      displayName() {
+        this.currentName = this.names[Math.floor(Math.random() * this.names.length)];
+      }
+    }
+  }
+</script>
